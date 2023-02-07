@@ -131,6 +131,10 @@ class CustomCFGDenoiser(sd_samplers_kdiffusion.CFGDenoiser):
             scale *= self.step / max
         elif mode == "Cosine Up":
             scale *= math.cos(self.step / max)
+        elif mode == "Tan Up":
+            scale *= math.tan(self.step / max)
+        elif mode == "Tan Down":
+            scale *= 1.0 - math.tan(self.step / max)
         scale += min
         return scale
 
